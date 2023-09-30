@@ -10,8 +10,10 @@ class Scene extends Phaser.Scene
     }
     
     preload(){        
-        this.load.audio('lose', 'music/lose.mp3');
-        this.load.audio('pick', 'music/pick.mp3');
+        //this.load.audio('pick', 'music/dropping.mp3');
+        this.load.audio('pick', 'music/ice_cup.mp3');
+        this.load.audio('lose', 'music/gameover.mp3');
+        this.load.audio('run', 'music/run.mp3');
         
         this.load.image("platform",'assets/3t2.png');
         this.load.image("water",'assets/water_droplets2.png');
@@ -21,7 +23,8 @@ class Scene extends Phaser.Scene
         this.load.image("coin","assets/coin.png");
         this.load.image("BG","assets/background.jpg");
 
-        this.load.spritesheet('player','assets/rabbit3 - doux.png',{frameWidth:72 ,frameHeight:72 });//圖片切割
+        //this.load.spritesheet('player','assets/rabbit3 - doux.png',{frameWidth:72 ,frameHeight:72 });//圖片切割
+        this.load.spritesheet('player','assets/player.png',{frameWidth:40 ,frameHeight:70 });//圖片切割
     }
 
     create()
@@ -42,7 +45,7 @@ class Scene extends Phaser.Scene
             fill: "white"
         });
 
-        this.controlText = this.add.text(10, 250, "←左 右→", {//操控方式
+        this.controlText = this.add.text(10, 300, "←左 右→", {//操控方式
             fontSize: 30,
             fill: "white"
         });
@@ -60,7 +63,7 @@ class Scene extends Phaser.Scene
 
         /*圖片載入*/
         this.add.image(600,250,'BG').setScale(0.45);//背景載入
-        this.player=new Player(this,500,500);//player載入
+        this.player=new Player(this,500,460);//player載入
         
         this.sea_urchin1=new sea_urchin(this,50,500).setScale(sea_urchinsize);//sea_urchin載入
         this.sea_urchin2=new sea_urchin(this,50,500).setScale(sea_urchinsize);//sea_urchin載入
@@ -110,14 +113,16 @@ class Scene extends Phaser.Scene
         /*player 左右動畫圖片載入*/
         this.anims.create({
             key:'left',
-            frames:this.anims.generateFrameNumbers('player',{start:14,end:16}),
+            //frames:this.anims.generateFrameNumbers('player',{start:14,end:16}),
+            frames:this.anims.generateFrameNumbers('player',{start:4,end:6}),
             frameRate:10,
             repeat:1
         });
 
         this.anims.create({
             key:'right',
-            frames:this.anims.generateFrameNumbers('player',{start:5,end: 7}),
+            //frames:this.anims.generateFrameNumbers('player',{start:5,end: 7}),
+            frames:this.anims.generateFrameNumbers('player',{start:0,end: 2}),
             frameRate: 10 ,
             repeat:1
         });
@@ -230,6 +235,7 @@ class Scene extends Phaser.Scene
 
     player_touch_sea_urchinG(sea_urchinG,player)
     {
+        this.sound.play('lose');
         sea_urchinG.disableBody(true, true);
         sea_urchinG.setDirection("outside");
         sessionStorage.setItem('myscore', this.score);//分數變數共享

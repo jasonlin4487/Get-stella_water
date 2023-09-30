@@ -7,7 +7,9 @@ class Menu extends Phaser.Scene{
     
     preload(){
         this.load.image("button","PNG/simple/24.png");
+        this.load.image("button1","PNG/simple/20.png");
         this.load.image("BG1","assets/bg_start.png");
+        this.load.audio('button', 'music/button01a.mp3');
     }
     create(){
         this.add.image(600,250,'BG1').setScale(0.45);//背景載入
@@ -17,9 +19,26 @@ class Menu extends Phaser.Scene{
         **"pointerup"： 當滑鼠按下時。
         **"執行程式名稱"： 按鈕按下後執行的程式。
         */
+        this.infbutton=this.add.image(400,350,"button").setInteractive({ useHandCursor: true }).on("pointerup", () => {this.infor();});
+        this.timeindexText = this.add.text(339, 342, "黛菈資訊連結", {
+            fontSize: "20px",
+            fill: "white"
+        });
+        /*
+        this.timeindexText = this.add.text(1050, 220, "https://lit.link/en/nkstella", {
+            fontSize: "20px",
+            fill: "white"
+        });
+        */
+
+        this.timeindexText = this.add.text(1050, 470, "作者:杞酷修", {
+            fontSize: "12px",
+            fill: "white"
+        });
+
         this.button=this.add.image(400,250,"button").setInteractive({ useHandCursor: true }).on("pointerup", () => {this.startgame();});
 
-        this.gamestart = this.add.text(350, 235, "start", {//設定要顯示的文字座標，此設立在上面按鈕上面
+        this.gamestart = this.add.text(350, 235, "Start", {//設定要顯示的文字座標，此設立在上面按鈕上面
             fontSize: "32px",
             color: "#ffffff"
         });
@@ -27,7 +46,12 @@ class Menu extends Phaser.Scene{
         
     }
     startgame(){
+        this.sound.play('button');
         this.scene.start("Scene");//選擇下一個要顯示的畫面
+    }
+    infor(){
+        //"https://lit.link/en/nkstella"
+        window.open('https://lit.link/en/nkstella', '_blank');
     }
     update(){
 

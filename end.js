@@ -8,6 +8,7 @@ class End extends Phaser.Scene{
     preload(){
         this.load.image("button","PNG/simple/24.png");
         this.load.image("BG2","assets/bg_end.png");
+        this.load.audio('button', 'music/button01a.mp3');
     }
     create(){
         var myscore =  sessionStorage.getItem('myscore');
@@ -22,11 +23,11 @@ class End extends Phaser.Scene{
         */
         this.button=this.add.image(400,250,"button").setInteractive({ useHandCursor: true }).on("pointerup", () => {this.startgame();});
 
-        this.scoreText = this.add.text(330, 135, "Score:", {
+        this.scoreText = this.add.text(330, 185, "Score:", {
             fontSize: "32px",
             fill: "white"
         });
-        this.timeText = this.add.text(330, 95, "Time:", {
+        this.timeText = this.add.text(330, 145, "Time:", {
             fontSize: "32px",
             fill: "white"
         });
@@ -41,6 +42,7 @@ class End extends Phaser.Scene{
         
     }
     startgame(){
+        this.sound.play('button');
         this.scene.start("Menu");//選擇下一個要顯示的畫面
     }
     update(){
