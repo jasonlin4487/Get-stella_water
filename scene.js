@@ -28,16 +28,22 @@ class Scene extends Phaser.Scene
     {
         /*常數宣告 */
         const watersize = 2;//水的尺寸
-        const sea_urchinsize = 2;//海膽的尺寸
+        const sea_urchinsize = 1.5;//海膽的尺寸
 
-        this.timeindex = 0;
+        /*創建文字*/
+        this.timeindex = 0;//時間
         this.timeindexText = this.add.text(10, 10, "Time:", {
             fontSize: 25,
             fill: "white"
         });
-        this.score = 0;
+        this.score = 0;//分數
         this.scoreText = this.add.text(10, 50, "Score:", {
             fontSize: 25,
+            fill: "white"
+        });
+
+        this.controlText = this.add.text(10, 250, "←左 右→", {//操控方式
+            fontSize: 30,
             fill: "white"
         });
 
