@@ -9,7 +9,7 @@ class Menu extends Phaser.Scene{
         this.load.image("button","PNG/simple/24.png");
         this.load.image("button1","PNG/simple/20.png");
         this.load.image("BG1","assets/bg_start.png");
-        this.load.audio('button', 'music/button01a.mp3');
+        this.load.audio('button', 'music/shooting-sound.mp3');
     }
     create(){
         this.add.image(600,250,'BG1').setScale(0.45);//背景載入
@@ -20,8 +20,8 @@ class Menu extends Phaser.Scene{
         **"執行程式名稱"： 按鈕按下後執行的程式。
         */
         this.infbutton=this.add.image(400,350,"button").setInteractive({ useHandCursor: true }).on("pointerup", () => {this.infor();});
-        this.timeindexText = this.add.text(339, 342, "黛菈資訊連結", {
-            fontSize: "20px",
+        this.stellainfor = this.add.text(339, 342, "黛菈資訊連結", {
+            fontSize: "20px Arial",
             fill: "white"
         });
         /*
@@ -32,7 +32,7 @@ class Menu extends Phaser.Scene{
         */
 
         this.timeindexText = this.add.text(1050, 470, "作者:杞酷修", {
-            fontSize: "12px",
+            fontSize: "12px Arial",
             fill: "white"
         });
 

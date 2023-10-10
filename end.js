@@ -8,7 +8,7 @@ class End extends Phaser.Scene{
     preload(){
         this.load.image("button","PNG/simple/24.png");
         this.load.image("BG2","assets/bg_end.png");
-        this.load.audio('button', 'music/button01a.mp3');
+        this.load.audio('button', 'music/shooting-sound.mp3');
     }
     create(){
         var myscore =  sessionStorage.getItem('myscore');
@@ -32,7 +32,7 @@ class End extends Phaser.Scene{
             fill: "white"
         });
         this.scoreText.setText("Score:" + myscore);//分數
-        this.timeText.setText("Time:" + mytime);//時間
+        this.timeText.setText("Time:" + Math.floor(mytime / 10));//時間
 
         this.gamestart = this.add.text(350, 235, "Close", {//設定要顯示的文字座標，此設立在上面按鈕上面
             fontSize: "32px",
