@@ -66,11 +66,6 @@ class Scene extends Phaser.Scene
             fontSize: 30,
             fill: "white"
         });
-        
-        this.test = this.add.text(10, 150, "tt", {
-            fontSize: 20,
-            fill: "white"
-        });
 
         // 在create方法中創建Timer
         var timer = this.time.addEvent({
