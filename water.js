@@ -6,13 +6,22 @@ class water extends Phaser.Physics.Arcade.Sprite {
       scene.add.existing(this);
       this.setBounce(0);
       this.setCollideWorldBounds(true);
-      this.direction = "inside";
+      this.direction = "outside";
+      this.fever ="show";
     }
     getDirection() {
       return this.direction;
     }
 
-  setDirection(dir) {
+    setDirection(dir) {
       this.direction = dir;
+    }
+
+    getFever() {
+      return this.fever;
+    }
+
+    setFever(dir) {
+      this.fever = dir;
     }
   }
