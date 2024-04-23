@@ -25,7 +25,7 @@ class Menu extends Phaser.Scene{
             fill: "white"
         });
         /*
-        this.timeindexText = this.add.text(1050, 220, "https://lit.link/en/nkstella", {
+        this.timeindexText = this.add.text(1050, 220, "https://lit.link/en/limnosstella", {
             fontSize: "20px",
             fill: "white"
         });
@@ -50,8 +50,8 @@ class Menu extends Phaser.Scene{
         this.scene.start("Scene");//選擇下一個要顯示的畫面
     }
     infor(){
-        //"https://lit.link/en/nkstella"
-        window.open('https://lit.link/en/nkstella', '_blank');
+        //"https://lit.link/en/limnosstella"
+        window.open('https://lit.link/en/limnosstella', '_blank');
     }
     update(){
 
